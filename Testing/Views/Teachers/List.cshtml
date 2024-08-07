@@ -1,0 +1,102 @@
+﻿
+
+@{
+    ViewBag.Title = "Welcome";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <style>
+        th, td {
+            text-align: center;
+            padding: 10px;
+        }
+
+        th {
+            color: white;
+            background-color: #0077b6;
+        }
+
+        tr:hover {
+            background-color: #bde0fe;
+            
+        }
+
+        #delete {
+            background-color: darkred;
+            color: white;
+        }
+
+        #update {
+            background-color: green;
+            color: white;
+        }
+        .addBtn {
+            background-color: #0077b6;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+
+        }
+
+        .addBtn:hover {
+                background-color: #0056b3;
+                color: white;
+            }
+
+    </style>
+    <title></title>
+</head>
+<body>
+
+    <div>
+            <table>
+                <thead>
+                <th>Teacher ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Hire date</th>
+                <th>Salary</th>
+                </thead>
+                <tbody>
+                    @foreach (var item in ViewBag.Teachers)
+                    {
+                        <tr>
+                            <td>@item.TeacherId</td>
+                            <td>@item.FName</td>
+                            <td>@item.LName</td>
+                            <td>@item.Hiredate</td>
+                            <td>@item.Salary</td>
+                            <td>
+                                <form action="/Teachers/UpdateTeacher" method="GET">
+                                    <input type="hidden" name="id" value="@item.TeacherId" />
+                                    <input type="submit" value="Update" id="update" />
+                                </form>
+                            </td>
+                            <td>
+                                <form action="/Teachers/DeleteTeacher" method="POST">
+                                    <input type="hidden" name="id" value="@item.TeacherId" />
+                                    <input type="submit" value="Delete" id="delete" />
+                                </form>
+
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    <br />
+    <div>
+        @Html.ActionLink("Add Teacher", "AddTeacher", "Teachers", null, new { @class = "addBtn" })
+
+    </div>
+</body>
+</html>
+

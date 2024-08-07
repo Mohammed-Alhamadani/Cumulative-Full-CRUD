@@ -1,0 +1,30 @@
+﻿
+
+@{
+    ViewBag.Title = "UpdateTeacher";
+}
+
+<h2>UpdateTeacher</h2>
+
+
+
+
+<form action="/Teachers/UpdateTeacher" method="POST">
+    <input type="hidden" name="TeacherId" value="@Model.TeacherId" />
+    <label for="FName">First Name:</label>
+    <input type="text" name="FName" value="@Model.FName" />
+    <br />
+    <label for="LName">Last Name:</label>
+    <input type="text" name="LName" value="@Model.LName" />
+    <br />
+    <label for="Hiredate">Hire Date:</label>
+    <input type="date" name="Hiredate" value="@Model.Hiredate" />
+    <br />
+    <label for="Salary">Salary:</label>
+    <input type="number" name="Salary" value="@Model.Salary" />
+    <br />
+    <input type="submit" value="Update" />
+</form>
+
+
+
