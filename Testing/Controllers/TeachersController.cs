@@ -9,6 +9,7 @@ using Testing.Models;
 
 namespace Testing.Controllers
 {
+    //MVC Controllers to render all the pages.
     public class TeachersController : Controller
     {
 
@@ -18,7 +19,7 @@ namespace Testing.Controllers
         {
             return View();
         }
-
+        //Method to listing all teachers
         public ActionResult List(string name)
         {
             MySqlConnection Conn = School.AccessDatabase();
@@ -61,6 +62,7 @@ namespace Testing.Controllers
         }
 
         // POST: Teachers/Create
+        //Method to Add Neew Teacher.
         [HttpPost]
         public ActionResult AddTeacher(Teacher teacher)
         {
@@ -86,7 +88,7 @@ namespace Testing.Controllers
 
 
         }
-
+        //Method to Delete the teacher
         public ActionResult DeleteTeacher(int? id)
         {
             MySqlConnection Conn = School.AccessDatabase();
@@ -99,6 +101,7 @@ namespace Testing.Controllers
             return RedirectToAction("List");
         }
 
+        //Method to Get the teacher information in the first time that which one want to update
         [HttpGet]
         public ActionResult UpdateTeacher(int id)
         {
@@ -120,7 +123,7 @@ namespace Testing.Controllers
             Conn.Close();
             return View(teacher);
         }
-
+        //Method to Update the information to the teacher.
         [HttpPost]
         public ActionResult UpdateTeacher(Teacher teacher)
         {
@@ -138,6 +141,7 @@ namespace Testing.Controllers
             return RedirectToAction("List");
         }
 
+        //Method to search for the teacher by ID and using localhost/teachers/show?teacherid=number.
         public ActionResult Show(int teacherId)
         {
             MySqlConnection Conn = School.AccessDatabase();
