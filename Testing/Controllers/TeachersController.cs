@@ -1,4 +1,5 @@
 ﻿using Cumulative_1.Models;
+using Google.Protobuf.WellKnownTypes;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,8 @@ namespace Testing.Controllers
             return View();
         }
         //Method to listing all teachers
+
+
         public ActionResult List(string name)
         {
             MySqlConnection Conn = School.AccessDatabase();
@@ -52,6 +55,7 @@ namespace Testing.Controllers
             //Return the final list of teachers
             ViewBag.Message = "Hello " + name;
             ViewBag.Teachers = teachers;
+
             return View();
         }
         [HttpGet]
@@ -62,7 +66,7 @@ namespace Testing.Controllers
         }
 
         // POST: Teachers/Create
-        //Method to Add Neew Teacher.
+        //Method to Add New Teacher.
         [HttpPost]
         public ActionResult AddTeacher(Teacher teacher)
         {
